@@ -1,21 +1,14 @@
 {
-  "name": "digital-bank",
+  "name": "e-banking",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "wdio ./wdio.conf.js"
+  "directories": {
+    "test": "tests"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AndreaGonzalezR/digital-bank.git"
+  "dependencies": {
+    "@wdio/cli": "^7.16.12"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AndreaGonzalezR/digital-bank/issues"
-  },
-  "homepage": "https://github.com/AndreaGonzalezR/digital-bank#readme",
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
@@ -30,7 +23,17 @@
     "wdio-chromedriver-service": "^7.2.2",
     "webdriverio": "^7.16.12"
   },
-  "dependencies": {
-    "@wdio/cli": "^7.16.12"
-  }
+  "scripts": {
+    "test": "wdio ./wdio.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaGonzalezR/e-banking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreaGonzalezR/e-banking/issues"
+  },
+  "homepage": "https://github.com/AndreaGonzalezR/e-banking#readme"
 }
