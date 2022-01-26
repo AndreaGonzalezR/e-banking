@@ -1,43 +1,105 @@
-# Casos de prueba en el Log in de Digital Bank
+# Test cases in the Login of Digital Bank
 
-### CP 1: **Log in con credenciales correctas**
+### Test case 1: **Should login successfully**
 
-Este caso de prueba verifica que cuando un usuario ingresa con las credenciales correctas en la pantalla de login de Digital Bank, el sitio web lo redirige a la pagina de Inicio. Se realiza este caso de prueba para comprobar que el sistema funciona correctamente si un usuario ingresa las credenciales válidas.
+This test case aims to verify that when the user introduces the correct credentials in the Login form of Digital Bank, is redirected to the Home Page.
 
-En este caso las credenciales correctas para poder loguearse son las siguientes:
+In this case the correct credentials to login are the following:
 
 * Username: jsmith@demo.io
 
 * Password: Demo123!
 
-El resultado observado luego de ejecutar este caso de prueba es que el usuario logra acceder a la página web de Digital Bank.
+The result of this test case is that the user can access to the Digital Bank Home Page.
 
-### CP 2: **Login con username incorrecto y password correcta**
 
-Este caso de prueba tiene el objetivo de verificar que no sea posible hace log in con un username diferente a jsmith@demo.io 
+### Test case 2: **Should login successfully with Remember me chechbox selected**
 
-Para realizar este caso de prueba se intenta acceder a la aplicacion Digital Bank con las siguientes credenciales:
+In this test case the correct credentials are introduced but now the "Remember me" checkbox is selected.
+
+The aim of this test is to verify that is possible to access the Home Page if the checkbox mentioned before is checked.
+
+In this case the correct credentials to login are the following:
+
+* Username: jsmith@demo.io
+
+* Password: Demo123!
+
+The obtained result is that it is possible to access to the Digital Bank site given the previous conditions.
+
+
+### Test case 3: **Should not login with invalid username and correct password**
+
+In this test case the objective is to verify that it is not possible to Login with a different password than Demo123! even though the username is correct.
+
+In order to run this test case, the following valid username was introduced in the Login form, with the invalid password:
 
 * Username: andrea@demo.io
 
 * Password: Demo123!
 
-El resultado observado es que no se puede acceder al sitio web de Digital Bank y se visualiza un mensaje de error.
+The result is that it is impossible to access the web site Home Page with these credentials and an error message is displayed.
 
-### CP 3: **Login con username correcto y password incorrecta**
 
-En este caso de prueba se intenta acceder al sitio con el username correcto, pero la password es incorrecta:
+### Test case 4: **Should not login with correct username and invalid password**
+
+This test case consists of introducing the correct username with a incorrect password 
 
 * Username: jsmith@demo.io
 
-* Password: Abc
+* Password: Demo
 
-El resultado observado es un mensaje de error, y no es posible iniciar sesion en el sitio de Digital Bank.
+The obtained result is an error message and it is not possible to access the Home Page of Digital Bank.
 
 
-### CP 4: **Login con credenciales correctas y casilla de Remember me seleccionada**
+### Test case 5: **Should not login with empty credential**
 
-En este caso de prueba se ingresan las credenciales válidas para ingresar al sitio, pero la diferencia en relación al CP 1, es que se activa un checkbox que se denomina "Remember me". 
-Se decidió realizar este caso de prueba con la finalidad de verificar que es posible acceder a la página de Inicio de Digital Bank, con las credenciales correctas y con esta checkbox seleccionada.
+This test case consists of trying to access the Home Page of Digital Bank with empty credentials 
 
-El resultado observado es que sí se puede acceder al sitio web.
+* Username: ''
+* Password: ''
+
+The expected result is an error message and it is not possible to access the Home Page of Digital Bank.
+
+
+### Test case 6: **Should not login with empty username and correct password**
+
+The aim of this test case is try to verify if it is possible to access the Home Page of Digital Bank with empty Username and the correct password, with the following credentials:
+
+* Username: ''
+* Password: Demo123!
+
+The obteined result is that the user can not access the Home Page of Digital Bank.
+
+
+### Test case 7: **Should not login with correct username and empty password**
+
+The aim of this test case is try to verify if it is possible to access the Home Page of Digital Bank with valid Username and empty password, with the following credentials:
+
+* Username: jsmith@demo.io
+* Password: ''
+
+The obteined result is that the user can not access the Home Page of Digital Bank.
+
+
+### Test case 8: **Should not login with empty username and incorrect password**
+
+The aim of this test case is try to verify if it is possible to access the Home Page of Digital Bank with empty Username and invalid password, with the following credentials:
+
+* Username: ''
+* Password: Demo
+
+The obteined result is that the user can not access the Home Page of Digital Bank.
+
+
+### Test case 9: **Should not login with incorrect username and empty password**
+
+The aim of this test case is to verify if it is possible to access the Home Page of Digital Bank with invalid Username and empty password, with the following credentials:
+
+* Username: andrea@demo.io
+* Password: ''
+
+The obteined result is that the user can not access the Home Page of Digital Bank, and an error message is displayed.
+
+
+

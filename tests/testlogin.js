@@ -1,91 +1,79 @@
 //const { assert } = require("console");
-//const { default: $ } = require("webdriverio/build/commands/browser/$");
+import LoginPage from '../pages/login.page';
+import HomePage from '../pages/home.page';
 
-describe ('TestLogin', () => {
+describe ('TestLogin', async () => {
 
-   
-    it('Login  with correct username and correct password', async () => {
+    it('Should login successfully', async () => {
 
-        var expect = require('chai').expect;
-
-        await browser.url('');
-        
-        let username = await $('[id = "username"]');
-        await username.setValue('jsmith@demo.io');
-        
-        let password = await $('[id = "password"]');
-        await password.setValue('Demo123!');
-        
-        let submit = await $('[id = "submit"]');
-        await submit.click();
-        
-        await expect(await $('#menuToggle')).to.exist; 
-        
-    });
-    
-
-    
-    it ('Log in with incorrect username and correct password', async () => {
-
-        var expect = require('chai').expect;
-
-        await browser.url('');
-        
-        let username = await $('[id = "username"]');
-        await username.setValue('andrea@demo.io');
-
-        let password = await $('[id = "password"]');
-        await password.setValue('Demo123!');
-        
-        let submit = await $('[id = "submit"]');
-        await submit.click();
-
-        await expect(await $('badge badge-pill badge-danger')).to.exist;
+        await LoginPage.open('login');
+        await LoginPage.loginAs('jsmith@demo.io', 'Demo123!');
+        await expect(HomePage.welcomeUser).toHaveTextContaining('Welcome Josh');
         
     });
 
-    
-    it ('Log in with correct username and incorrect password', async () => {
+    it('Should login successfully with Remember me chechbox selected', async () => {
 
-        var expect = require('chai').expect;
-
-        await browser.url('');
-
-        let username = await $('[id = "username"]');
-        await username.setValue('jsmith@demo.io');
-
-        let password = await $('[id = "password"]');
-        await password.setValue('Abc');
-
-        let submit = await $('[id = "submit"]');
-        await submit.click();
-
-        await expect(await $('badge badge-pill badge-danger')).to.exist;
+        await LoginPage.open('login');
+        await LoginPage.selectRememberMe('jsmith@demo.io', 'Demo123!');
+        await expect(HomePage.welcomeUser).toHaveTextContaining('Welcome Josh');
         
     });
-    
-    
-    it('Login with correct credentials and Remember me chechbox', async () => {
 
-        var expect = require('chai').expect;
+    it ('Should not login with invalid username and correct password', async () => {
 
-        await browser.url('');
+        await LoginPage.open('login');
+        await LoginPage.loginAs('andrea@demo.io', 'Demo123!');
+        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        
+    });
 
-        let username = await $('[id = "username"]');
-        await username.setValue('jsmith@demo.io');
+    it ('Should not login with correct username and invalid password', async () => {
+       
+        await LoginPage.open('login');
+        await LoginPage.loginAs('jsmith@demo.io', 'Demo');
+        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        
+    });
 
-        let password = await $('[id = "password"]');
-        await password.setValue('Demo123!');
+    it('Should not login with empty credentials', async () => {
 
-        let elemento = await $('[id = "remember-me"]');
-        await elemento.click();
-
-        let submit = await $('[id = "submit"]');
-        await submit.click();
-
-        await expect(await $('#menuToggle')).to.exist; 
+        await LoginPage.open('login');
+        await LoginPage.loginAs('', '');
+        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
 
     });
-    
+  
+    it('Should not login with empty username and correct password', async () => {
+
+        await LoginPage.open('login');
+        await LoginPage.loginAs('', 'Demo123!');
+        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+
+    });
+
+    it('Should not login with correct username and empty password', async () => {
+
+        await LoginPage.open('login');
+        await LoginPage.loginAs('jsmith@demo.io', '');
+        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+
+    });
+
+    it('Should not login with empty username and incorrect password', async () => {
+
+        await LoginPage.open('login');
+        await LoginPage.loginAs('', 'Demo');
+        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+
+    });
+
+    it('Should not login with incorrect username and empty password', async () => {
+
+        await LoginPage.open('login');
+        await LoginPage.loginAs('andrea@demo.io', '');
+        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+
+    });
 
 });
