@@ -15,7 +15,8 @@ describe ('TestLogin', async () => {
     it('Should login successfully with Remember me chechbox selected', async () => {
 
         await LoginPage.open('login');
-        await LoginPage.selectRememberMe('jsmith@demo.io', 'Demo123!');
+        await LoginPage.selectRememberMe();
+        await LoginPage.loginAs('jsmith@demo.io', 'Demo123!');
         await expect(HomePage.welcomeUser).toHaveTextContaining('Welcome Josh');
         
     });
@@ -24,7 +25,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('andrea@demo.io', 'Demo123!');
-        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
         
     });
 
@@ -32,7 +33,7 @@ describe ('TestLogin', async () => {
        
         await LoginPage.open('login');
         await LoginPage.loginAs('jsmith@demo.io', 'Demo');
-        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
         
     });
 
@@ -40,7 +41,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('', '');
-        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
   
@@ -48,7 +49,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('', 'Demo123!');
-        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
 
@@ -56,7 +57,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('jsmith@demo.io', '');
-        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
 
@@ -64,7 +65,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('', 'Demo');
-        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
 
@@ -72,7 +73,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('andrea@demo.io', '');
-        expect(await $('badge badge-pill badge-danger')).toHaveTextContaining('Error');
+        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
 
