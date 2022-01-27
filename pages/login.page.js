@@ -6,7 +6,7 @@ class LoginPage extends BasePage{
     get passWordInput(){return $('#password')}
     get loginButton(){return $('#submit')}
     get rememberMe(){return $('#remember-me')}
-    
+    get statusMessage(){return $('#badge badge-pill badge-danger')}
 
     async loginAs(userName, passWord){
 
@@ -16,12 +16,9 @@ class LoginPage extends BasePage{
 
     }
 
-    async selectRememberMe(userName, passWord){
-
-        await this.userNameInput.setValue(userName);
-        await this.passWordInput.setValue(passWord);
+    async selectRememberMe(){
+        
         await this.rememberMe.click();
-        await this.loginButton.click();
 
     }
 }
