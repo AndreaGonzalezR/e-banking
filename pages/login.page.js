@@ -6,7 +6,7 @@ class LoginPage extends BasePage{
     get passWordInput(){return $('#password')}
     get loginButton(){return $('#submit')}
     get rememberMe(){return $('#remember-me')}
-    get statusMessage(){return $('#badge badge-pill badge-danger')}
+    get statusMessage(){return $('.badge')}
 
     async loginAs(userName, passWord){
 
