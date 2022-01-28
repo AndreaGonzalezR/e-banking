@@ -25,7 +25,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('andrea@demo.io', 'Demo123!');
-        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
+        await expect( LoginPage.statusMessage).toHaveTextContaining('Error');
         
     });
 
@@ -33,7 +33,7 @@ describe ('TestLogin', async () => {
        
         await LoginPage.open('login');
         await LoginPage.loginAs('jsmith@demo.io', 'Demo');
-        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
+        await expect(LoginPage.statusMessage).toHaveTextContaining('Error');
         
     });
 
@@ -41,7 +41,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('', '');
-        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
+        await expect(LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
   
@@ -49,7 +49,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('', 'Demo123!');
-        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
+        await expect(LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
 
@@ -57,7 +57,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('jsmith@demo.io', '');
-        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
+        await expect(LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
 
@@ -65,7 +65,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('', 'Demo');
-        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
+        await expect(LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
 
@@ -73,7 +73,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('andrea@demo.io', '');
-        expect(await LoginPage.statusMessage).toHaveTextContaining('Error');
+        await expect(LoginPage.statusMessage).toHaveTextContaining('Error');
 
     });
 
