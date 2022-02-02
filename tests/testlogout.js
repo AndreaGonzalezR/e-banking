@@ -1,31 +1,25 @@
 import LoginPage from '../pages/login.page';
 import HomePage from '../pages/home.page';
 import LogoutPage from '../pages/logout.page';
-//import { expect } from 'chai';
 
 describe ('TestLogout', async () => {
 
-    it('Should login and logout successfully', async () => {
+    beforeEach(function(){
 
-        await LoginPage.open('login');
-        await LoginPage.loginAs('jsmith@demo.io', 'Demo123!');
-        await expect(HomePage.welcomeUser).toHaveTextContaining('Welcome Josh');
+        LoginPage.open('login');
+        LoginPage.loginAs('jsmith@demo.io', 'Demo123!');
+
+    });
+
+    it('Should logout successfully', async () => {
         
         await LogoutPage.logout();
+
+        await expect(LogoutPage.logoutSuccess).toHaveTextContaining('Success');
         
 
     });
 
-    it('Should login successfully and logout pressing the back arrow', async () => {
-
-        await LoginPage.open('login');
-        await LoginPage.loginAs('jsmith@demo.io', 'Demo123!');
-        await expect(HomePage.welcomeUser).toHaveTextContaining('Welcome Josh');
-        
-        await browser.back();
-        await expect(LoginPage.loginButton).toExist();
-        
-
-    });
+    
 
 });
