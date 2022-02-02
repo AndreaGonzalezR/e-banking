@@ -4,10 +4,10 @@ import LogoutPage from '../pages/logout.page';
 
 describe ('TestLogout', async () => {
 
-    beforeEach(function(){
+    beforeEach(async () => {
 
-        LoginPage.open('login');
-        LoginPage.loginAs('jsmith@demo.io', 'Demo123!');
+        await LoginPage.open('login');
+        await LoginPage.loginAs('jsmith@demo.io', 'Demo123!');
 
     });
 
