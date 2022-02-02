@@ -14,8 +14,6 @@ class LogoutPage extends BasePage{
         await this.userMenu.click();
         await this.logoutOption.click();
 
-        await expect(this.logoutSuccess).toHaveTextContaining('Success');
-
     }
 
 }
