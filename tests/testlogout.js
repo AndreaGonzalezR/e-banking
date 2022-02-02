@@ -12,6 +12,19 @@ describe ('TestLogout', async () => {
         await expect(HomePage.welcomeUser).toHaveTextContaining('Welcome Josh');
         
         await LogoutPage.logout();
+        
+
+    });
+
+    it('Should login successfully and logout pressing the back arrow', async () => {
+
+        await LoginPage.open('login');
+        await LoginPage.loginAs('jsmith@demo.io', 'Demo123!');
+        await expect(HomePage.welcomeUser).toHaveTextContaining('Welcome Josh');
+        
+        await browser.back();
+        await expect(LoginPage.loginButton).toExist();
+        
 
     });
 

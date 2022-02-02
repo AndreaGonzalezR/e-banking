@@ -1,4 +1,6 @@
 //const { assert } = require("console");
+
+
 import LoginPage from '../pages/login.page';
 import HomePage from '../pages/home.page';
 
@@ -25,7 +27,7 @@ describe ('TestLogin', async () => {
 
         await LoginPage.open('login');
         await LoginPage.loginAs('andrea@demo.io', 'Demo123!');
-        await expect( LoginPage.statusMessage).toHaveTextContaining('Error');
+        await expect(LoginPage.statusMessage).toHaveTextContaining('Error');
         
     });
 
@@ -78,3 +80,4 @@ describe ('TestLogin', async () => {
     });
 
 });
+
