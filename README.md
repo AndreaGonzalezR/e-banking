@@ -9,7 +9,7 @@ In addition, it is also necessary to install the dependencies using the **npm in
 
 Once the previous steps are made, it is necessary to access the Visual Studio Code Workspace, named E-BANKING WORKSPACE.
 
-For running the test related to the Login Page, it is necessary to open a New Terminal located in the tools bar. 
+For running the test related to the Login Page and the Logout Page as well, it is necessary to open a New Terminal located in the tools bar. 
 
 Finally, write in the Terminal previously opened the comand: **npm run test**.
 
